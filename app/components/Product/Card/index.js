@@ -4,7 +4,7 @@ import ArrowIcon from 'app/assets/icons/arrow.png';
 import {styles} from './styles';
 
 export function Card({item, navigateToDetails}) {
-  const {name, description, image, price} = item;
+  const {name, image, price} = item;
   return (
     <TouchableOpacity
       activeOpacity={0.6}

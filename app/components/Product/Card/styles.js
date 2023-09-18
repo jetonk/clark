@@ -46,8 +46,7 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 600,
-    marginTop: 10,
-    marginBottom: 5,
+    marginTop: 15,
   },
   image: {
     width: 150,
