@@ -1,6 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {TextInput} from 'react-native';
-// import ArrowIcon from 'app/assets/icons/arrow.png';
 import {styles} from './styles';
 
 export function SearchBar({handleSearch}) {
@@ -12,3 +12,6 @@ export function SearchBar({handleSearch}) {
     />
   );
 }
+SearchBar.propTypes = {
+  handleSearch: PropTypes.func.isRequired,
+};

@@ -15,7 +15,7 @@ export function ProductDetails({route}) {
     product: {name, image, description, price},
   } = route.params;
 
-  const createTwoButtonAlert = () => {
+  const addToCart = () => {
     Alert.alert('Added to cart', `${name} / $${price}`, [
       {
         text: 'Cancel',
@@ -25,6 +25,7 @@ export function ProductDetails({route}) {
       {text: 'OK', onPress: () => console.log('OK Pressed')},
     ]);
   };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.imageContainer}>
@@ -35,8 +36,8 @@ export function ProductDetails({route}) {
         <Text style={styles.description}>{description}</Text>
       </View>
       <View style={styles.addToCart}>
-        <Text style={styles.price}>Price: ${price}</Text>
-        <TouchableOpacity onPress={createTwoButtonAlert}>
+        <Text style={styles.price}>Price: {price}&euro;</Text>
+        <TouchableOpacity onPress={addToCart}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>Add to cart</Text>
             <Icon name="cart-outline" style={styles.icon} />

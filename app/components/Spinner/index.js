@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
   },
 });
 
-export function Spinner({}) {
+export function Spinner() {
   return (
     <View style={styles.container}>
       <ActivityIndicator size="large" />

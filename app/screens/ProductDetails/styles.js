@@ -32,6 +32,7 @@ export const styles = StyleSheet.create({
     marginTop: 7,
   },
   imageContainer: {
+    backgroundColor: '#FFFFFF',
     marginTop: 10,
     shadowColor: '#000000',
     shadowOffset: {
@@ -41,12 +42,12 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     shadowRadius: 3.05,
     elevation: 4,
+    borderTopStartRadius: 3,
+    borderTopEndRadius: 3,
   },
   image: {
     width: '100%',
     height: 350,
-    borderTopStartRadius: 3,
-    borderTopEndRadius: 3,
   },
   button: {
     flexDirection: 'row',

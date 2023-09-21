@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import ArrowIcon from 'app/assets/icons/arrow.png';
 import {styles} from './styles';
@@ -23,3 +24,7 @@ export function Card({item, navigateToDetails}) {
     </TouchableOpacity>
   );
 }
+Card.propTypes = {
+  item: PropTypes.object.isRequired,
+  navigateToDetails: PropTypes.func.isRequired,
+};

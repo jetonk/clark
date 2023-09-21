@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {View, StyleSheet, Text} from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -20,3 +21,6 @@ export function Label({text}) {
     </View>
   );
 }
+Label.propTypes = {
+  text: PropTypes.string.isRequired,
+};
