@@ -8,6 +8,7 @@ export function SearchBar({search, handleSearch}) {
     <TextInput
       style={styles.input}
       placeholder="Search by name.."
+      placeholderTextColor="#000000"
       value={search}
       onChangeText={handleSearch}
     />

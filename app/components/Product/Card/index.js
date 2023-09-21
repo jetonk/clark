@@ -4,12 +4,12 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import ArrowIcon from 'app/assets/icons/arrow.png';
 import {styles} from './styles';
 
-export function Card({item, navigateToDetails}) {
+export function Card({item, handleCardOnClick}) {
   const {name, image, price} = item;
   return (
     <TouchableOpacity
       activeOpacity={0.6}
-      onPress={navigateToDetails}
+      onPress={handleCardOnClick}
       style={styles.item}>
       <View style={styles.imageContainer}>
         <Image source={{uri: image}} style={styles.image} />
@@ -26,5 +26,5 @@ export function Card({item, navigateToDetails}) {
 }
 Card.propTypes = {
   item: PropTypes.object.isRequired,
-  navigateToDetails: PropTypes.func.isRequired,
+  handleCardOnClick: PropTypes.func.isRequired,
 };

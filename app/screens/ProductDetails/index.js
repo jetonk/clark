@@ -17,7 +17,7 @@ export function ProductDetails() {
   const {name, image, description, price} = product;
 
   const addToCart = () => {
-    Alert.alert('Added to cart', `${name} / $${price}`, [
+    Alert.alert(`Added to cart: ${name}`, `${price} EU`, [
       {
         text: 'Cancel',
         onPress: () => console.log('Cancel Pressed'),

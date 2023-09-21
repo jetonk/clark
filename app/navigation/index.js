@@ -57,16 +57,16 @@ export function AppNavigator() {
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="Product"
+          name="Products"
           component={Product}
           options={{title: 'Products'}}
         />
         <Stack.Screen
           name="ProductDetails"
           component={ProductDetails}
-          options={({route}) => ({
-            title: route?.params?.name || 'Product Details',
-          })}
+          options={{
+            title: 'Product Details',
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
