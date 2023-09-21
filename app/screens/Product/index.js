@@ -3,29 +3,36 @@ import {SafeAreaView, FlatList} from 'react-native';
 import {Card} from '@components/Product/Card';
 import {SearchBar} from '@components/SearchBar';
 import {Spinner} from '@components/Spinner';
-import {NotFound} from '@components/NotFound';
+import {Label} from '@components/Label';
 import {styles} from './styles';
 
 const API_URL = 'https://mocki.io/v1/7d2be33f-a0ef-4715-b286-c514fae8bed4';
 
 export function Product({navigation}) {
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
     async function fetchProducts() {
-      const response = await fetch(API_URL);
-      const data = await response.json();
-      setProducts(data);
-      setFilteredProducts(data);
-      setIsLoading(false);
+      try {
+        const response = await fetch(API_URL);
+        const data = await response.json();
+        setProducts(data);
+        setFilteredProducts(data);
+        setIsLoading(false);
+        setError(null);
+      } catch (err) {
+        setIsLoading(false);
+        setError(err?.message || 'Error during the API request.');
+      }
     }
     fetchProducts();
   }, []);
 
-  const navigateToDetails = () => {
-    navigation.navigate('ProductDetails');
+  const navigateToDetails = product => {
+    navigation.navigate('ProductDetails', {name: product.name, product});
   };
 
   const handleSearch = value => {
@@ -46,11 +53,14 @@ export function Product({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <SearchBar handleSearch={handleSearch} />
-      {filteredProducts.length === 0 && <NotFound />}
+      {filteredProducts.length === 0 && !error && (
+        <Label text="Product not found.." />
+      )}
+      {error && <Label text={error} />}
       <FlatList
         data={filteredProducts}
         renderItem={({item}) => (
-          <Card item={item} navigateToDetails={navigateToDetails} />
+          <Card item={item} navigateToDetails={() => navigateToDetails(item)} />
         )}
         keyExtractor={item => item.name}
       />

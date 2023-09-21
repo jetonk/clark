@@ -13,10 +13,10 @@ export const styles = StyleSheet.create({
   },
 });
 
-export function NotFound({}) {
+export function Label({text}) {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Products not found..</Text>
+      <Text style={styles.text}>{text}</Text>
     </View>
   );
 }

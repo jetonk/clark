@@ -9,7 +9,7 @@ module.exports = {
           '@assets': './app/assets',
           '@components': './app/components',
           '@screens': './app/screens',
-          '@services': './app/services',
+          '@navigation': './app/navigation',
           '@utils': './app/utils',
         },
       },

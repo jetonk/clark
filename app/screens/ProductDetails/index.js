@@ -1,10 +1,19 @@
-import * as React from 'react';
-import {View, Text} from 'react-native';
+import React from 'react';
+import {View, Text, Image} from 'react-native';
+import {styles} from './styles';
 
-export function ProductDetails() {
+export function ProductDetails({route}) {
+  const {product} = route.params;
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Product Detail</Text>
+    <View style={styles.container}>
+      <View style={styles.imageContainer}>
+        <Image
+          source={{uri: product.image}}
+          style={styles.image}
+          resizeMode="cover"
+        />
+      </View>
+      <Text style={styles.name}>{product.name}</Text>
     </View>
   );
 }

@@ -7,6 +7,7 @@
       "assets/*": ["./app/assets/*"],
       "components/*": ["./app/components/*"],
       "screens/*": ["./app/screens/*"],
+      "navigation/*": ["./app/navigation/*"],
       "utils/*": ["./app/utils/*"]
     }
   }
