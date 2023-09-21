@@ -72,6 +72,7 @@ export const styles = StyleSheet.create({
   },
   price: {
     fontSize: 20,
+    fontWeight: '600',
   },
   icon: {
     fontSize: 24,

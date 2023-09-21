@@ -13,7 +13,7 @@ export function Product({navigation}) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [refreshing, setRefreshing] = useState(false);
-  const [isSearching, setIsSearching] = useState(false);
+  const [search, setSearch] = useState('');
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [rows, setRows] = useState(5);
@@ -38,6 +38,7 @@ export function Product({navigation}) {
   }, [fetchProducts]);
 
   const onRefresh = () => {
+    setSearch('');
     fetchProducts();
   };
 
@@ -47,6 +48,7 @@ export function Product({navigation}) {
   };
 
   const handleSearch = value => {
+    setSearch(value);
     if (value === '') {
       setFilteredProducts(products);
       return;
@@ -56,14 +58,11 @@ export function Product({navigation}) {
     const filteredData = products.filter(product =>
       product.name.toLowerCase().includes(searchTerm),
     );
-    if (!isSearching) {
-      setIsSearching(true);
-    }
     setFilteredProducts(filteredData);
   };
 
   const onEndReached = () => {
-    if (!isSearching) {
+    if (search === '') {
       setRows(rows + rows);
       setFilteredProducts(products.slice(0, rows + rows));
     }
@@ -75,7 +74,7 @@ export function Product({navigation}) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <SearchBar handleSearch={handleSearch} />
+      <SearchBar search={search} handleSearch={handleSearch} />
       {filteredProducts.length === 0 && !error && (
         <Label text="Product not found.." />
       )}

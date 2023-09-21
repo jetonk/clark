@@ -3,15 +3,17 @@ import PropTypes from 'prop-types';
 import {TextInput} from 'react-native';
 import {styles} from './styles';
 
-export function SearchBar({handleSearch}) {
+export function SearchBar({search, handleSearch}) {
   return (
     <TextInput
       style={styles.input}
-      placeholder="Search "
+      placeholder="Search by name.."
+      value={search}
       onChangeText={handleSearch}
     />
   );
 }
 SearchBar.propTypes = {
+  search: PropTypes.string.isRequired,
   handleSearch: PropTypes.func.isRequired,
 };
