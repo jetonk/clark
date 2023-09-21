@@ -8,6 +8,7 @@
       "components/*": ["./app/components/*"],
       "screens/*": ["./app/screens/*"],
       "navigation/*": ["./app/navigation/*"],
+      "context/*": ["./app/context/*"],
       "utils/*": ["./app/utils/*"]
     }
   }

@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useCallback} from 'react';
+import React, {useEffect, useState, useCallback, useContext} from 'react';
 import {SafeAreaView, FlatList} from 'react-native';
 import {Card} from '@components/Product/Card';
 import {SearchBar} from '@components/SearchBar';
@@ -6,8 +6,10 @@ import {Spinner} from '@components/Spinner';
 import {Label} from '@components/Label';
 import {styles} from './styles';
 import {API_URL} from 'app/config';
+import {AppContext} from 'app/context';
 
 export function Product({navigation}) {
+  const {setProduct} = useContext(AppContext);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [refreshing, setRefreshing] = useState(false);
@@ -40,7 +42,8 @@ export function Product({navigation}) {
   };
 
   const navigateToDetails = product => {
-    navigation.navigate('ProductDetails', {name: product.name, product});
+    setProduct(product);
+    navigation.navigate('ProductDetails');
   };
 
   const handleSearch = value => {

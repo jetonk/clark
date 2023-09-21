@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   SafeAreaView,
   View,
@@ -8,12 +8,13 @@ import {
   Alert,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {AppContext} from 'app/context';
 import {styles} from './styles';
 
-export function ProductDetails({route}) {
-  const {
-    product: {name, image, description, price},
-  } = route.params;
+export function ProductDetails() {
+  const {product} = useContext(AppContext);
+
+  const {name, image, description, price} = product;
 
   const addToCart = () => {
     Alert.alert('Added to cart', `${name} / $${price}`, [

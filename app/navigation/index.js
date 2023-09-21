@@ -1,16 +1,18 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Product} from '@screens/Product';
-import {ProductDetails} from '@screens/ProductDetails';
-
 import Icon from 'react-native-vector-icons/Ionicons';
+import {Product} from 'app/screens/Product';
+import {ProductDetails} from 'app/screens/ProductDetails';
+import {AppContext} from 'app/context';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 export function TabNavigator() {
+  const {product} = useContext(AppContext);
+
   return (
     <Tab.Navigator>
       <Tab.Screen
@@ -31,6 +33,15 @@ export function TabNavigator() {
           tabBarLabelStyle: {fontSize: 14},
           tabBarIcon: () => <Icon name="list" />,
         }}
+        listeners={({navigation}) => ({
+          tabPress: e => {
+            if (!product) {
+              e.preventDefault();
+              return;
+            }
+            navigation.navigate('ProductDetails');
+          },
+        })}
       />
     </Tab.Navigator>
   );
